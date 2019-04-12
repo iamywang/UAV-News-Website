@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <el-alert :closable="false" center title="视频管理" type="success" style="margin: 8px"/>
+    <el-input placeholder="请输入内容" style="margin: 8px"><el-button slot="append" icon="el-icon-search" /></el-input>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -8,9 +10,9 @@
       border
       fit
       highlight-current-row>
-      <el-table-column align="center" label="ID" prop="_id"/>
+      <el-table-column align="center" sortable label="ID" prop="_id"/>
       <el-table-column align="center" label="视频名称" prop="name"/>
-      <el-table-column align="center" label="发表日期" prop="date"/>
+      <el-table-column align="center" sortable label="发表日期" prop="date"/>
       <el-table-column align="center" label="时长" prop="time"/>
       <!--      <el-table-column align="center" label="背景图" prop="videoback"/>-->
       <!--      <el-table-column align="center" label="视频地址" prop="videosrc"/>-->
@@ -25,6 +27,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination :total="100" background layout="prev, pager, next" style="float: right"/>
   </div>
 </template>
 

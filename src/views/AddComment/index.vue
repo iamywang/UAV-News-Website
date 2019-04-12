@@ -13,7 +13,7 @@
       <el-form-item label="头像"><el-input v-model="head" placeholder="请输入头像"/></el-form-item>
       <el-form-item label="所在地"><el-input v-model="location" placeholder="请输入所在地"/></el-form-item>
       <el-form-item label="机型"><el-input v-model="model" placeholder="请输入机型"/></el-form-item>
-      <el-form-item label="评论"><el-input v-model="newstext" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入评论"/></el-form-item>
+      <el-form-item label="评论"><el-input v-model="text" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入评论"/></el-form-item>
       <el-form-item>
         <el-button type="primary" @click="addComment">发表评论</el-button>
         <el-button>取消</el-button>
@@ -24,6 +24,7 @@
 
 <script>
 import axios from 'axios'
+import qs from 'qs'
 export default {
   name: 'AddComment',
   data() {
@@ -48,7 +49,7 @@ export default {
   methods: {
     addComment() {
       var that = this
-      axios.post('/server/addComment/', {
+      axios.post('/server/addComment/', qs.stringify({
         id: that.id,
         type: that.type,
         head: that.head,
@@ -57,11 +58,19 @@ export default {
         location: that.location,
         model: that.model,
         text: that.text
-      }).then(function(response) {
+      })).then(function(response) {
         that.$message({
           message: '发表成功！',
           type: 'success'
         })
+        that.id = ''
+        that.type = ''
+        that.head = ''
+        that.name = ''
+        that.date = ''
+        that.location = ''
+        that.model = ''
+        that.text = ''
       })
     }
   }

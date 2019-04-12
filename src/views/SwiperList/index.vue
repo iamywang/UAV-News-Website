@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-alert :closable="false" center title="用户管理" type="success" style="margin: 8px"/>
+    <el-alert :closable="false" center title="轮播图管理" type="success" style="margin: 8px"/>
     <el-input placeholder="请输入内容" style="margin: 8px"><el-button slot="append" icon="el-icon-search" /></el-input>
     <el-table
       v-loading="listLoading"
@@ -10,9 +10,9 @@
       border
       fit
       highlight-current-row>
-      <el-table-column align="center" sortable label="ID" prop="_id"/>
-      <el-table-column align="center" label="用户昵称" prop="name"/>
-      <el-table-column align="center" sortable label="注册时间" prop="src"/>
+      <el-table-column align="center" sortable label="轮播图编号" prop="_id"/>
+      <el-table-column align="center" label="轮播图标题" prop="name"/>
+      <el-table-column align="center" label="轮播图地址" prop="src" width="600"/>
       <el-table-column align="center" label="选项">
         <template slot-scope="scope">
           <el-button-group>

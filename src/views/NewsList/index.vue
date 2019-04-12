@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <el-alert :closable="false" center title="文章管理" type="success" style="margin: 8px"/>
+    <el-input placeholder="请输入内容" style="margin: 8px"><el-button slot="append" icon="el-icon-search" /></el-input>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -25,6 +27,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination :total="100" background layout="prev, pager, next" style="float: right"/>
   </div>
 </template>
 

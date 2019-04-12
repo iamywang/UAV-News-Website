@@ -80,6 +80,12 @@ export const constantRouterMap = [
         name: 'addNews',
         component: () => import('@/views/AddNews/index'),
         meta: { title: '添加新闻', icon: 'write' }
+      },
+      {
+        path: 'func3',
+        name: 'addNews',
+        component: () => import('@/views/SwiperList/index'),
+        meta: { title: '轮播图管理', icon: 'pic' }
       }
     ]
   },
