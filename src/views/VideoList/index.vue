@@ -4,38 +4,24 @@
       v-loading="listLoading"
       :data="list"
       element-loading-text="Loading"
+      stripe
       border
       fit
       highlight-current-row>
-      <el-table-column align="center" label="ID" width="95">
+      <el-table-column align="center" label="ID" prop="_id"/>
+      <el-table-column align="center" label="视频名称" prop="name"/>
+      <el-table-column align="center" label="发表日期" prop="date"/>
+      <el-table-column align="center" label="时长" prop="time"/>
+      <!--      <el-table-column align="center" label="背景图" prop="videoback"/>-->
+      <!--      <el-table-column align="center" label="视频地址" prop="videosrc"/>-->
+      <el-table-column align="center" label="观看量" prop="see"/>
+      <el-table-column align="center" label="评论数" prop="comment"/>
+      <el-table-column align="center" label="选项">
         <template slot-scope="scope">
-          {{ scope.$index }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Title">
-        <template slot-scope="scope">
-          {{ scope.row.title }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Pageviews" width="110" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.pageviews }}
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Status" width="110" align="center">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
-        <template slot-scope="scope">
-          <i class="el-icon-time"/>
-          <span>{{ scope.row.display_time }}</span>
+          <el-button-group>
+            <el-button type="primary" size="mini" icon="el-icon-edit"/>
+            <el-button type="danger" size="mini" icon="el-icon-delete"/>
+          </el-button-group>
         </template>
       </el-table-column>
     </el-table>
@@ -43,22 +29,11 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
-
+import axios from 'axios'
 export default {
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
   data() {
     return {
-      list: null,
+      list: [],
       listLoading: true
     }
   },
@@ -67,10 +42,15 @@ export default {
   },
   methods: {
     fetchData() {
+      var that = this
       this.listLoading = true
-      getList(this.listQuery).then(response => {
-        this.list = response.data.items
-        this.listLoading = false
+      axios.get('/server/search/', {
+        params: {
+          key: 'videos'
+        }
+      }).then(function(res) {
+        that.list = res.data
+        that.listLoading = false
       })
     }
   }

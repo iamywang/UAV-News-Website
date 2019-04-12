@@ -9,8 +9,13 @@
       fit
       highlight-current-row>
       <el-table-column align="center" sortable label="ID" prop="_id"/>
-      <el-table-column align="center" label="用户昵称" prop="name"/>
-      <el-table-column align="center" sortable label="注册时间" prop="src"/>
+      <el-table-column align="center" label="文章名称" prop="name"/>
+      <el-table-column align="center" sortable label="发表日期" prop="date"/>
+      <el-table-column align="center" label="作者" prop="tag"/>
+      <!--      <el-table-column align="center" label="背景图" prop="newsback"/>-->
+      <!--      <el-table-column align="center" label="正文" prop="newstext" width="400"/>-->
+      <el-table-column align="center" label="阅读量" prop="see"/>
+      <el-table-column align="center" label="评论数" prop="comment"/>
       <el-table-column align="center" label="选项">
         <template slot-scope="scope">
           <el-button-group>
@@ -25,7 +30,6 @@
 
 <script>
 import axios from 'axios'
-
 export default {
   data() {
     return {
@@ -38,11 +42,11 @@ export default {
   },
   methods: {
     fetchData() {
-      this.listLoading = true
       var that = this
+      this.listLoading = true
       axios.get('/server/search/', {
         params: {
-          key: 'pics'
+          key: 'article'
         }
       }).then(function(res) {
         that.list = res.data

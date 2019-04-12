@@ -55,9 +55,9 @@ export const constantRouterMap = [
       },
       {
         path: 'func2',
-        name: 'addUser',
-        component: () => import('@/views/UserList/index'),
-        meta: { title: '添加用户', icon: 'add' }
+        name: 'articleManage',
+        component: () => import('@/views/ArticleList/index'),
+        meta: { title: '文章管理', icon: 'manage' }
       }
     ]
   },
@@ -80,18 +80,6 @@ export const constantRouterMap = [
         name: 'addNews',
         component: () => import('@/views/AddNews/index'),
         meta: { title: '添加新闻', icon: 'write' }
-      },
-      {
-        path: 'func3',
-        name: 'commentManagement',
-        component: () => import('@/views/NewsList/index'),
-        meta: { title: '评论管理', icon: 'comment' }
-      },
-      {
-        path: 'func4',
-        name: 'addComment',
-        component: () => import('@/views/AddComment/index'),
-        meta: { title: '添加评论', icon: 'addcomment' }
       }
     ]
   },
@@ -114,15 +102,24 @@ export const constantRouterMap = [
         name: 'addVideos',
         component: () => import('@/views/AddVideo/index'),
         meta: { title: '添加视频', icon: 'write' }
-      },
+      }
+    ]
+  },
+  {
+    path: '/comments',
+    component: Layout,
+    redirect: '/comments/func1',
+    name: 'commentManagement',
+    meta: { title: '评论管理', icon: 'comment' },
+    children: [
       {
-        path: 'func3',
+        path: 'func1',
         name: 'commentManagement',
-        component: () => import('@/views/VideoList/index'),
+        component: () => import('@/views/CommentList/index'),
         meta: { title: '评论管理', icon: 'comment' }
       },
       {
-        path: 'func4',
+        path: 'func2',
         name: 'addComment',
         component: () => import('@/views/AddComment/index'),
         meta: { title: '添加评论', icon: 'addcomment' }
