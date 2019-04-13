@@ -1,5 +1,16 @@
 <template>
   <div class="app-container">
+    <el-alert :closable="false" center title="评论管理" type="success" style="margin: 8px"/>
+    <el-row>
+      <el-col :span="6" style="margin: 8px">
+        <el-input placeholder="请输入内容" size="small">
+          <el-button slot="append" size="small" icon="el-icon-search" />
+        </el-input>
+      </el-col>
+      <el-col :span="4" style="margin: 8px">
+        <el-button type="plain" size="small" icon="el-icon-plus">添加评论</el-button>
+      </el-col>
+    </el-row>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -26,6 +37,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination :total="100" background layout="prev, pager, next" style="float: right"/>
   </div>
 </template>
 

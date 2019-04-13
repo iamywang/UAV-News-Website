@@ -31,10 +31,6 @@
       </el-col>
       <el-col :span="4">
         <el-card shadow="always" style="margin: 8px; color: darkblue">其他</el-card>
-        <div class="block" style="margin: 8px">
-          <span class="demonstration" style="margin: 8px">评分</span>
-          <el-rate style="margin: 8px"/>
-        </div>
       </el-col>
     </el-row>
   </div>

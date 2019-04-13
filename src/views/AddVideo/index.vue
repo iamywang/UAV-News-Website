@@ -2,9 +2,9 @@
   <div class="components-container">
     <el-alert :closable="false" center title="发表新视频" type="success" style="margin: 8px"/>
     <el-form label-width="120px" style="margin: 8px">
-      <el-form-item label="视频id"><el-input v-model="id" placeholder="请输入视频id"/></el-form-item>
+      <el-form-item label="视频id" style="text-align: left">{{ id }}</el-form-item>
       <el-form-item label="视频标题"><el-input v-model="title" placeholder="请输入视频标题"/></el-form-item>
-      <el-form-item label="视频发表日期"><el-date-picker v-model="date" type="datetime" placeholder="选择日期时间" style="width: 100%"/></el-form-item>
+      <el-form-item label="视频发表日期" style="text-align: left">{{ date }}</el-form-item>
       <el-form-item label="视频时长"><el-input v-model="time" placeholder="请输入视频时长"/></el-form-item>
       <el-form-item label="视频作者"><el-input v-model="author" placeholder="请输入视频作者"/></el-form-item>
       <el-form-item label="视频背景图"><el-input v-model="videoback" placeholder="请输入视频背景图"/></el-form-item>
@@ -33,6 +33,11 @@ export default {
       videosrc: ''
     }
   },
+  created() {
+    var tdate = new Date()
+    this.date = this.formatTime(tdate)
+    this.id = 'video' + tdate.getFullYear() + this.formatNumber(tdate.getMonth() + 1) + this.formatNumber(tdate.getDate()) + this.formatNumber(tdate.getHours()) + this.formatNumber(tdate.getMinutes())
+  },
   methods: {
     addVideo() {
       var that = this
@@ -49,12 +54,27 @@ export default {
           type: 'success'
         })
         that.id = ''
-        that.name = ''
+        that.title = ''
         that.date = ''
         that.time = ''
+        that.author = ''
         that.videoback = ''
         that.videosrc = ''
       })
+    },
+    formatNumber(n) {
+      n = n.toString()
+      return n[1] ? n : '0' + n
+    },
+    formatTime(date) {
+      var year = date.getFullYear()
+      var month = date.getMonth() + 1
+      var day = date.getDate()
+
+      var hour = date.getHours()
+      var minute = date.getMinutes()
+
+      return [year, month, day].join('.') + ' ' + [hour, minute].map(this.formatNumber).join(':')
     }
   }
 }

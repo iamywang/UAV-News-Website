@@ -8,9 +8,9 @@
         </el-select>
       </el-form-item>
       <el-form-item label="文章/视频编号"><el-input v-model="id" placeholder="请输入编号"/></el-form-item>
-      <el-form-item label="评论发表日期"><el-date-picker v-model="date" type="datetime" placeholder="选择日期时间" style="width: 100%"/></el-form-item>
+      <el-form-item label="评论发表日期" style="text-align: left">{{ date }}</el-form-item>
       <el-form-item label="昵称"><el-input v-model="name" placeholder="请输入昵称"/></el-form-item>
-      <el-form-item label="头像"><el-input v-model="head" placeholder="请输入头像"/></el-form-item>
+      <el-form-item label="头像"><el-input v-model="head" placeholder="请输入头像地址"/></el-form-item>
       <el-form-item label="所在地"><el-input v-model="location" placeholder="请输入所在地"/></el-form-item>
       <el-form-item label="机型"><el-input v-model="model" placeholder="请输入机型"/></el-form-item>
       <el-form-item label="评论"><el-input v-model="text" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入评论"/></el-form-item>
@@ -46,6 +46,10 @@ export default {
       text: ''
     }
   },
+  created() {
+    var tdate = new Date()
+    this.date = this.formatTime(tdate)
+  },
   methods: {
     addComment() {
       var that = this
@@ -72,6 +76,20 @@ export default {
         that.model = ''
         that.text = ''
       })
+    },
+    formatNumber(n) {
+      n = n.toString()
+      return n[1] ? n : '0' + n
+    },
+    formatTime(date) {
+      var year = date.getFullYear()
+      var month = date.getMonth() + 1
+      var day = date.getDate()
+
+      var hour = date.getHours()
+      var minute = date.getMinutes()
+
+      return [year, month, day].join('.') + ' ' + [hour, minute].map(this.formatNumber).join(':')
     }
   }
 }

@@ -83,7 +83,7 @@ export const constantRouterMap = [
       },
       {
         path: 'func3',
-        name: 'addNews',
+        name: 'swiperManage',
         component: () => import('@/views/SwiperList/index'),
         meta: { title: '轮播图管理', icon: 'pic' }
       }
@@ -120,7 +120,7 @@ export const constantRouterMap = [
     children: [
       {
         path: 'func1',
-        name: 'commentManagement',
+        name: 'commentManage',
         component: () => import('@/views/CommentList/index'),
         meta: { title: '评论管理', icon: 'comment' }
       },
