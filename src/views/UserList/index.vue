@@ -110,7 +110,8 @@ export default {
           type: 'success',
           message: '添加成功!'
         })
-        that.dialogFormVisible = false
+        that.nick = ''
+        that.registerFormVisible = false
         that.fetchData()
       })
     },

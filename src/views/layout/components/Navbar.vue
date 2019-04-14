@@ -4,7 +4,7 @@
     <breadcrumb />
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
-        <img src="https://wx.qlogo.cn/mmopen/vi_32/kIW2xO2OGd5Oqt8dYCJUXibav0cLJGb914HhmA8z0BfQLErwVIsVwNkmP3NIRLThmbIk63NiajYSxxMyHibTiahiaDQ/132" class="user-avatar">admin
+        <img src="https://wx.qlogo.cn/mmopen/vi_32/kIW2xO2OGd5Oqt8dYCJUXibav0cLJGb914HhmA8z0BfQLErwVIsVwNkmP3NIRLThmbIk63NiajYSxxMyHibTiahiaDQ/132" class="user-avatar">
         <i class="el-icon-caret-bottom"/>
       </div>
       <el-dropdown-menu slot="dropdown" class="user-dropdown">

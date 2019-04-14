@@ -102,6 +102,9 @@ export default {
           type: 'success',
           message: '添加成功!'
         })
+        that.id = ''
+        that.title = ''
+        that.src = ''
         that.swiperFormVisible = false
         that.fetchData()
       })
