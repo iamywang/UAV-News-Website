@@ -58,6 +58,12 @@ export const constantRouterMap = [
         name: 'articleManage',
         component: () => import('@/views/ArticleList/index'),
         meta: { title: '文章管理', icon: 'manage' }
+      },
+      {
+        path: 'func3',
+        name: 'addArticle',
+        component: () => import('@/views/AddArticle/index'),
+        meta: { title: '添加文章', icon: 'write' }
       }
     ]
   },

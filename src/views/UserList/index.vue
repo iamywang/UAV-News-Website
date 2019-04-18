@@ -13,6 +13,7 @@
           <el-form label-width="120px" style="margin: 8px">
             <el-form-item label="ID">{{ id }}</el-form-item>
             <el-form-item label="昵称"><el-input v-model="nick" placeholder="请输入昵称"/></el-form-item>
+            <el-form-item label="用户类型" style="text-align: left">普通用户</el-form-item>
             <el-form-item label="注册时间">{{ regdate }}</el-form-item>
             <el-form-item label="最后登录时间">{{ logindate }}</el-form-item>
             <el-form-item>
@@ -31,8 +32,12 @@
       border
       fit
       highlight-current-row>
+      <el-table-column align="center" type="index"/>
       <el-table-column align="center" sortable label="ID" prop="_id"/>
       <el-table-column align="center" label="用户昵称" prop="name"/>
+      <el-table-column align="center" label="用户类型">
+        <template slot-scope="scope">普通用户</template>
+      </el-table-column>
       <el-table-column align="center" sortable label="注册时间" prop="regdate"/>
       <el-table-column align="center" sortable label="最后登录时间" prop="logindate"/>
       <el-table-column align="center" label="选项">
@@ -42,6 +47,7 @@
             <el-dialog :visible.sync="dialogFormVisible" title="编辑用户">
               <el-form label-width="120px" style="margin: 8px">
                 <el-form-item label="昵称"><el-input v-model="nick" placeholder="请输入昵称"/></el-form-item>
+                <el-form-item label="用户类型" style="text-align: left">普通用户</el-form-item>
                 <el-form-item label="注册时间" style="text-align: left">{{ regdate }}</el-form-item>
                 <el-form-item label="最后登录时间" style="text-align: left">{{ logindate }}</el-form-item>
                 <el-form-item>

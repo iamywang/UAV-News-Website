@@ -19,7 +19,8 @@
       border
       fit
       highlight-current-row>
-      <el-table-column align="center" sortable label="ID" prop="_id"/>
+      <el-table-column align="center" type="index"/>
+      <el-table-column align="center" sortable label="ID" prop="_id" width="160"/>
       <el-table-column align="center" label="文章名称" prop="name" width="300"/>
       <el-table-column align="center" sortable label="发表日期" prop="date"/>
       <el-table-column align="center" label="作者" prop="tag"/>

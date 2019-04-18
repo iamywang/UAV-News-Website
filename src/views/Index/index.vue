@@ -1,38 +1,42 @@
 <template>
   <div class="dashboard-container">
-    <el-alert
-      title="主页"
-      type="success"
-      description="这是无人机后台管理界面"
-      show-icon
-      style="margin: 8px"/>
-    <el-row :gutter="12" style="text-align: center">
-      <el-col :span="8">
-        <el-card shadow="always" style="margin: 8px; color: darkblue">功能一览</el-card>
-        <el-card shadow="hover" style="margin: 8px">用户管理</el-card>
-        <el-card shadow="hover" style="margin: 8px">轮播图管理</el-card>
-        <el-card shadow="hover" style="margin: 8px">新闻管理</el-card>
-        <el-card shadow="hover" style="margin: 8px">视频管理</el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card shadow="always" style="margin: 8px; color: darkblue">统计</el-card>
-        <el-col :span="12">
-          <div style="margin: 8px">用户数量</div>
-          <el-progress :percentage="1" type="circle" style="margin: 8px"/>
-          <div style="margin: 8px">新闻数量</div>
-          <el-progress :percentage="14" type="circle" style="margin: 8px"/>
-        </el-col>
-        <el-col :span="12">
-          <div style="margin: 8px">轮播图数量</div>
-          <el-progress :percentage="3" type="circle" style="margin: 8px"/>
-          <div style="margin: 8px">视频数量</div>
-          <el-progress :percentage="2" type="circle" style="margin: 8px"/>
-        </el-col>
-      </el-col>
-      <el-col :span="4">
-        <el-card shadow="always" style="margin: 8px; color: darkblue">其他</el-card>
-      </el-col>
-    </el-row>
+    <el-col :span="16">
+      <el-card>
+        <h4>总览统计</h4>
+        <el-tag style="margin-top: 8px; margin-bottom: 8px">用户数量</el-tag>
+        <el-progress :stroke-width="18" :percentage="5"/>
+        <el-tag style="margin-top: 8px; margin-bottom: 8px">文章数量</el-tag>
+        <el-progress :stroke-width="18" :percentage="3"/>
+        <el-tag style="margin-top: 8px; margin-bottom: 8px">新闻数量</el-tag>
+        <el-progress :stroke-width="18" :percentage="12"/>
+        <el-tag style="margin-top: 8px; margin-bottom: 8px">视频数量</el-tag>
+        <el-progress :stroke-width="18" :percentage="2"/>
+        <el-tag style="margin-top: 8px; margin-bottom: 8px">评论数量</el-tag>
+        <el-progress :stroke-width="18" :percentage="18"/>
+      </el-card>
+    </el-col>
+    <el-col :span="8">
+      <el-timeline>
+        <el-timeline-item timestamp="2019-4-18 9:46" placement="top">
+          <el-card>
+            <h4>TEST</h4>
+            <p>TEST 提交于 2019-4-18 9:46</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2019-4-18 9:46" placement="top">
+          <el-card>
+            <h4>TEST</h4>
+            <p>TEST 提交于 2019-4-18 9:46</p>
+          </el-card>
+        </el-timeline-item>
+        <el-timeline-item timestamp="2019-4-18 9:46" placement="top">
+          <el-card>
+            <h4>TEST</h4>
+            <p>TEST 提交于 2019-4-18 9:46</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+    </el-col>
   </div>
 </template>
 

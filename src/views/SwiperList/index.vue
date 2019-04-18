@@ -30,6 +30,7 @@
       border
       fit
       highlight-current-row>
+      <el-table-column align="center" type="index"/>
       <el-table-column align="center" sortable label="轮播图编号" prop="_id"/>
       <el-table-column align="center" label="轮播图标题" prop="name"/>
       <el-table-column align="center" label="轮播图地址" prop="src" width="600"/>
