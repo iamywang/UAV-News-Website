@@ -47,7 +47,7 @@ export default {
         newsback: that.newsback,
         newstext: that.newstext
       })).then(function(response) {
-        that.$message({
+        that.$notify({
           message: '发表成功！',
           type: 'success'
         })

@@ -99,9 +99,9 @@ export default {
         name: that.title,
         src: that.src
       })).then(function(res) {
-        that.$message({
-          type: 'success',
-          message: '添加成功!'
+        that.$notify({
+          message: '添加成功!',
+          type: 'success'
         })
         that.id = ''
         that.title = ''
@@ -124,9 +124,9 @@ export default {
         type: 'warning'
       }).then(() => {
         this.confirmDel()
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+        this.$notify({
+          message: '删除成功!',
+          type: 'success'
         })
       })
     },
@@ -137,9 +137,9 @@ export default {
         name: that.title,
         src: that.src
       })).then(function(res) {
-        that.$message({
-          type: 'success',
-          message: '编辑成功!'
+        that.$notify({
+          message: '编辑成功!',
+          type: 'success'
         })
         that.dialogFormVisible = false
         that.fetchData()

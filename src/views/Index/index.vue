@@ -1,19 +1,36 @@
 <template>
   <div class="dashboard-container">
     <el-col :span="16">
-      <el-card>
-        <h4>总览统计</h4>
-        <el-tag style="margin-top: 8px; margin-bottom: 8px">用户数量</el-tag>
-        <el-progress :stroke-width="18" :percentage="5"/>
-        <el-tag style="margin-top: 8px; margin-bottom: 8px">文章数量</el-tag>
-        <el-progress :stroke-width="18" :percentage="3"/>
-        <el-tag style="margin-top: 8px; margin-bottom: 8px">新闻数量</el-tag>
-        <el-progress :stroke-width="18" :percentage="12"/>
-        <el-tag style="margin-top: 8px; margin-bottom: 8px">视频数量</el-tag>
-        <el-progress :stroke-width="18" :percentage="2"/>
-        <el-tag style="margin-top: 8px; margin-bottom: 8px">评论数量</el-tag>
-        <el-progress :stroke-width="18" :percentage="18"/>
-      </el-card>
+      <el-row style="margin-bottom: 8px">
+        <el-card>
+          <h4>今日统计</h4>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">用户数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="5"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">文章数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="3"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">新闻数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="12"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">视频数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="2"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">评论数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="18"/>
+        </el-card>
+      </el-row>
+      <el-row>
+        <el-card>
+          <h4>总览统计</h4>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">用户数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="5"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">文章数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="3"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">新闻数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="12"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">视频数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="2"/>
+          <el-tag style="margin-top: 8px; margin-bottom: 8px">评论数量</el-tag>
+          <el-progress :stroke-width="18" :percentage="18"/>
+        </el-card>
+      </el-row>
     </el-col>
     <el-col :span="8">
       <el-timeline>

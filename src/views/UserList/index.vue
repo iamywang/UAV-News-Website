@@ -112,7 +112,7 @@ export default {
         regdate: that.regdate,
         logindate: that.logindate
       })).then(function(res) {
-        that.$message({
+        that.$notify({
           type: 'success',
           message: '添加成功!'
         })
@@ -136,7 +136,7 @@ export default {
         type: 'warning'
       }).then(() => {
         this.confirmDel()
-        this.$message({
+        this.$notify({
           type: 'success',
           message: '删除成功!'
         })
@@ -150,7 +150,7 @@ export default {
         regdate: that.regdate,
         logindate: that.logindate
       })).then(function(res) {
-        that.$message({
+        that.$notify({
           type: 'success',
           message: '编辑成功!'
         })

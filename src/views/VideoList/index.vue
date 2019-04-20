@@ -107,7 +107,7 @@ export default {
         type: 'warning'
       }).then(() => {
         this.confirmDel()
-        this.$message({
+        this.$notify({
           type: 'success',
           message: '删除成功!'
         })
@@ -124,7 +124,7 @@ export default {
         videosrc: that.videosrc,
         see: that.see
       })).then(function(res) {
-        that.$message({
+        that.$notify({
           type: 'success',
           message: '编辑成功!'
         })

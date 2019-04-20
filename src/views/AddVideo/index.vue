@@ -49,7 +49,7 @@ export default {
         videoback: that.videoback,
         videosrc: that.videosrc
       })).then(function(response) {
-        that.$message({
+        that.$notify({
           message: '发表成功！',
           type: 'success'
         })
