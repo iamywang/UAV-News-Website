@@ -19,6 +19,12 @@
       border
       fit
       highlight-current-row>
+      <el-table-column align="center" type="expand">
+        <template slot-scope="scope">
+          <el-tag style="margin-bottom: 8px">封面图详情</el-tag>
+          <div><img :src="scope.row.videoback" width="320" height="160"></div>
+        </template>
+      </el-table-column>
       <el-table-column align="center" type="index"/>
       <el-table-column align="center" sortable label="ID" prop="_id"/>
       <el-table-column align="center" label="视频名称" prop="name" width="300"/>

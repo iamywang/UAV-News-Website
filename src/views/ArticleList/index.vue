@@ -19,6 +19,12 @@
       border
       fit
       highlight-current-row>
+      <el-table-column align="center" type="expand">
+        <template slot-scope="scope">
+          <el-tag style="margin-bottom: 8px">封面图详情</el-tag>
+          <div><img :src="scope.row.newsback" width="300" height="200"></div>
+        </template>
+      </el-table-column>
       <el-table-column align="center" type="index"/>
       <el-table-column align="center" sortable label="ID" prop="_id" width="160"/>
       <el-table-column align="center" label="文章名称" prop="name" width="300"/>

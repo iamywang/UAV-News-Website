@@ -30,6 +30,12 @@
       border
       fit
       highlight-current-row>
+      <el-table-column align="center" type="expand">
+        <template slot-scope="scope">
+          <el-tag style="margin-bottom: 8px">图片详情</el-tag>
+          <div><img :src="scope.row.src" width="320" height="160"></div>
+        </template>
+      </el-table-column>
       <el-table-column align="center" type="index"/>
       <el-table-column align="center" sortable label="轮播图编号" prop="_id"/>
       <el-table-column align="center" label="轮播图标题" prop="name"/>

@@ -66,6 +66,11 @@
       <el-table-column align="center" type="index"/>
       <el-table-column align="center" sortable label="类别" prop="type" width="100"/>
       <el-table-column align="center" sortable label="ID" prop="_id"/>
+      <el-table-column align="center" label="头像" width="72">
+        <template slot-scope="scope">
+          <img :src="scope.row.head" width="40" height="40">
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="昵称" prop="name"/>
       <!--      <el-table-column align="center" sortable label="楼层" prop="level"/>-->
       <!--      <el-table-column align="center" sortable label="评论日期" prop="date"/>-->

@@ -34,6 +34,11 @@
       highlight-current-row>
       <el-table-column align="center" type="index"/>
       <el-table-column align="center" sortable label="ID" prop="_id"/>
+      <el-table-column align="center" label="头像" width="72">
+        <template slot-scope="scope">
+          <img src="https://www.easyicon.net/download/png/1164661/64/" width="40" height="40">
+        </template>
+      </el-table-column>
       <el-table-column align="center" label="用户昵称" prop="name"/>
       <el-table-column align="center" label="用户类型">
         <template slot-scope="scope">普通用户</template>
