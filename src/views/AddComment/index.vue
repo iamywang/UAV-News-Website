@@ -1,6 +1,6 @@
 <template>
   <div class="components-container">
-    <el-alert :closable="false" center title="发表新评论" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">添加评论</el-card>
     <el-form label-width="120px" style="margin: 8px">
       <el-form-item label="类别">
         <el-select v-model="type" placeholder="请选择" style="width: 100%">

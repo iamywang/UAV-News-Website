@@ -1,12 +1,16 @@
 <template>
   <div class="components-container">
-    <el-alert :closable="false" center title="发表文章" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">添加文章</el-card>
     <el-form label-width="120px" style="margin: 8px">
       <el-form-item label="文章id" style="text-align: left">{{ id }}</el-form-item>
       <el-form-item label="文章标题"><el-input v-model="title" placeholder="请输入文章标题"/></el-form-item>
       <el-form-item label="文章发表日期" style="text-align: left">{{ date }}</el-form-item>
       <el-form-item label="文章作者"><el-input v-model="author" placeholder="请输入文章作者"/></el-form-item>
-      <el-form-item label="文章背景图"><el-input v-model="newsback" placeholder="请输入文章背景图地址"/></el-form-item>
+      <el-form-item label="文章背景图">
+        <el-input v-model="newsback" placeholder="请输入文章背景图地址">
+          <el-button slot="append" size="small">预览</el-button>
+        </el-input>
+      </el-form-item>
       <el-form-item label="文章正文"><el-input v-model="newstext" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入正文"/></el-form-item>
       <el-form-item>
         <el-button type="primary" @click="addNews">发布文章</el-button>

@@ -17,7 +17,7 @@ const user = {
       state.name = name
     },
     SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar
+      state.avatar = 'https://wx.qlogo.cn/mmopen/vi_32/kIW2xO2OGd5Oqt8dYCJUXibav0cLJGb914HhmA8z0BfQLErwVIsVwNkmP3NIRLThmbIk63NiajYSxxMyHibTiahiaDQ/132'
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles

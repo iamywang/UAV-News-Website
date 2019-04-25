@@ -1,13 +1,16 @@
 <template>
   <div class="components-container">
-    <el-alert :closable="false" center title="发表新闻" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">添加新闻</el-card>
     <el-form label-width="120px" style="margin: 8px">
       <el-form-item label="新闻id" style="text-align: left">{{ id }}</el-form-item>
       <el-form-item label="新闻标题"><el-input v-model="title" placeholder="请输入新闻标题"/></el-form-item>
       <el-form-item label="新闻发表日期" style="text-align: left">{{ date }}</el-form-item>
       <el-form-item label="新闻作者"><el-input v-model="author" placeholder="请输入新闻作者"/></el-form-item>
-      <el-form-item label="新闻背景图"><el-input v-model="newsback" placeholder="请输入新闻背景图地址"/></el-form-item>
-      <el-form-item label="新闻正文"><el-input v-model="newstext" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入正文"/></el-form-item>
+      <el-form-item label="新闻背景图">
+        <el-input v-model="newsback" placeholder="请输入新闻背景图地址"/>
+        <img :src="newsback" width="400" height="225" style="margin-top: 8px">
+      </el-form-item>
+      <el-form-item label="新闻正文"><el-input v-moel="newstext" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入正文"/></el-form-item>
       <el-form-item>
         <el-button type="primary" @click="addNews">发布新闻</el-button>
         <el-button>取消</el-button>

@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-alert :closable="false" center title="视频管理" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">视频管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
         <el-input placeholder="请输入内容" size="small">
@@ -21,8 +21,36 @@
       highlight-current-row>
       <el-table-column align="center" type="expand">
         <template slot-scope="scope">
-          <el-tag style="margin-bottom: 8px">封面图详情</el-tag>
-          <div><img :src="scope.row.videoback" width="320" height="160"></div>
+          <el-col :span="12">
+            <el-row>
+              <el-tag style="margin-bottom: 8px">视频id</el-tag>
+              <span>{{ scope.row._id }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">视频名称</el-tag>
+              <span>{{ scope.row.name }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">发表日期</el-tag>
+              <span>{{ scope.row.date }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">视频时长</el-tag>
+              <span>{{ scope.row.time }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">视频阅读量</el-tag>
+              <span>{{ scope.row.see }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">视频评论数</el-tag>
+              <span>{{ scope.row.comment }}</span>
+            </el-row>
+          </el-col>
+          <el-col :span="12">
+            <el-tag style="margin-bottom: 8px">视频详情</el-tag>
+            <div><video :src="scope.row.videosrc" controls="controls" width="400" height="225">emm</video></div>
+          </el-col>
         </template>
       </el-table-column>
       <el-table-column align="center" type="index"/>

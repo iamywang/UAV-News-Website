@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-alert :closable="false" center title="轮播图管理" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">轮播图管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
         <el-input placeholder="请输入内容" size="small">
@@ -13,7 +13,11 @@
           <el-form label-width="120px" style="margin: 8px">
             <el-form-item label="ID">{{ id }}</el-form-item>
             <el-form-item label="标题"><el-input v-model="title" placeholder="请输入标题"/></el-form-item>
-            <el-form-item label="图片地址"><el-input v-model="src" placeholder="请输入图片地址"/></el-form-item>
+            <el-form-item label="图片地址">
+              <el-input v-model="src" placeholder="请输入图片地址">
+                <el-button slot="append" size="small">预览</el-button>
+              </el-input>
+            </el-form-item>
             <el-form-item>
               <el-button @click="swiperFormVisible = false">取消</el-button>
               <el-button type="primary" @click="confirmAddSwiper">确定</el-button>
@@ -47,7 +51,11 @@
             <el-dialog :visible.sync="dialogFormVisible" title="编辑轮播图">
               <el-form label-width="120px" style="margin: 8px">
                 <el-form-item label="轮播图标题"><el-input v-model="title" placeholder="请输入轮播图标题"/></el-form-item>
-                <el-form-item label="轮播图地址"><el-input v-model="src" placeholder="请输入轮播图地址"/></el-form-item>
+                <el-form-item label="轮播图地址">
+                  <el-input v-model="src" placeholder="请输入轮播图地址">
+                    <el-button slot="append" size="small">预览</el-button>
+                  </el-input>
+                </el-form-item>
                 <el-form-item>
                   <el-button @click="dialogFormVisible = false">取消</el-button>
                   <el-button type="primary" @click="confirmEdit">确定</el-button>

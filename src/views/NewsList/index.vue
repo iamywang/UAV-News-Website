@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-alert :closable="false" center title="文章管理" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">新闻管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
         <el-input placeholder="请输入内容" size="small">
@@ -21,8 +21,36 @@
       highlight-current-row>
       <el-table-column align="center" type="expand">
         <template slot-scope="scope">
-          <el-tag style="margin-bottom: 8px">封面图详情</el-tag>
-          <div><img :src="scope.row.newsback" width="300" height="200"></div>
+          <el-col :span="14">
+            <el-row>
+              <el-tag style="margin-bottom: 8px">新闻id</el-tag>
+              <span>{{ scope.row._id }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">新闻名称</el-tag>
+              <span>{{ scope.row.name }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">发表日期</el-tag>
+              <span>{{ scope.row.date }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">新闻作者</el-tag>
+              <span>{{ scope.row.tag }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">新闻阅读量</el-tag>
+              <span>{{ scope.row.see }}</span>
+            </el-row>
+            <el-row>
+              <el-tag style="margin-bottom: 8px">新闻评论数</el-tag>
+              <span>{{ scope.row.comment }}</span>
+            </el-row>
+          </el-col>
+          <el-col :span="10">
+            <el-tag style="margin-bottom: 8px">背景图详情</el-tag>
+            <div><img :src="scope.row.newsback" width="300" height="200"></div>
+          </el-col>
         </template>
       </el-table-column>
       <el-table-column align="center" type="index"/>

@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-alert :closable="false" center title="用户管理" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">用户管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
         <el-input placeholder="请输入内容" size="small">
@@ -36,7 +36,8 @@
       <el-table-column align="center" sortable label="ID" prop="_id"/>
       <el-table-column align="center" label="头像" width="72">
         <template slot-scope="scope">
-          <img src="https://www.easyicon.net/download/png/1164661/64/" width="40" height="40">
+          <img v-if="scope.row._id!==1" src="https://www.easyicon.net/download/png/1164661/64/" width="40" height="40" style="border-radius: 100%">
+          <img v-if="scope.row._id===1" src="https://wx.qlogo.cn/mmopen/vi_32/kIW2xO2OGd5Oqt8dYCJUXibav0cLJGb914HhmA8z0BfQLErwVIsVwNkmP3NIRLThmbIk63NiajYSxxMyHibTiahiaDQ/132" width="40" height="40" style="border-radius: 100%">
         </template>
       </el-table-column>
       <el-table-column align="center" label="用户昵称" prop="name"/>

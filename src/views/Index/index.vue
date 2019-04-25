@@ -1,76 +1,114 @@
 <template>
-  <div class="dashboard-container">
-    <el-col :span="16">
-      <el-row style="margin-bottom: 8px">
-        <el-card>
-          <h4>今日统计</h4>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">用户数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="5"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">文章数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="3"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">新闻数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="12"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">视频数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="2"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">评论数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="18"/>
-        </el-card>
-      </el-row>
-      <el-row>
-        <el-card>
-          <h4>总览统计</h4>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">用户数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="5"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">文章数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="3"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">新闻数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="12"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">视频数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="2"/>
-          <el-tag style="margin-top: 8px; margin-bottom: 8px">评论数量</el-tag>
-          <el-progress :stroke-width="18" :percentage="18"/>
-        </el-card>
-      </el-row>
-    </el-col>
-    <el-col :span="8">
-      <el-timeline>
-        <el-timeline-item timestamp="2019-4-18 9:46" placement="top">
-          <el-card>
-            <h4>TEST</h4>
-            <p>TEST 提交于 2019-4-18 9:46</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2019-4-18 9:46" placement="top">
-          <el-card>
-            <h4>TEST</h4>
-            <p>TEST 提交于 2019-4-18 9:46</p>
-          </el-card>
-        </el-timeline-item>
-        <el-timeline-item timestamp="2019-4-18 9:46" placement="top">
-          <el-card>
-            <h4>TEST</h4>
-            <p>TEST 提交于 2019-4-18 9:46</p>
-          </el-card>
-        </el-timeline-item>
-      </el-timeline>
-    </el-col>
+  <div class="dashboard-editor-container">
+    <github-corner class="github-corner" />
+
+    <panel-group @handleSetLineChartData="handleSetLineChartData" />
+
+    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+      <line-chart :chart-data="lineChartData" />
+    </el-row>
+
+    <el-row :gutter="32">
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <raddar-chart />
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <pie-chart />
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <bar-chart />
+        </div>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="8">
+      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
+        <transaction-table />
+      </el-col>
+      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
+        <todo-list />
+      </el-col>
+      <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
+        <box-card />
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
+import GithubCorner from '@/components/GithubCorner'
+import PanelGroup from './components/PanelGroup'
+import LineChart from './components/LineChart'
+import RaddarChart from './components/RaddarChart'
+import PieChart from './components/PieChart'
+import BarChart from './components/BarChart'
+import BoxCard from './components/BoxCard'
+
+const lineChartData = {
+  newVisitis: {
+    expectedData: [100, 120, 161, 134, 105, 160, 165],
+    actualData: [120, 82, 91, 154, 162, 140, 145]
+  },
+  messages: {
+    expectedData: [200, 192, 120, 144, 160, 130, 140],
+    actualData: [180, 160, 151, 106, 145, 150, 130]
+  },
+  purchases: {
+    expectedData: [80, 100, 121, 104, 105, 90, 100],
+    actualData: [120, 90, 100, 138, 142, 130, 130]
+  },
+  shoppings: {
+    expectedData: [130, 140, 141, 142, 145, 150, 160],
+    actualData: [120, 82, 91, 154, 162, 140, 130]
+  }
+}
+
 export default {
-  name: 'Index'
+  name: 'DashboardAdmin',
+  components: {
+    GithubCorner,
+    PanelGroup,
+    LineChart,
+    RaddarChart,
+    PieChart,
+    BarChart,
+    BoxCard
+  },
+  data() {
+    return {
+      lineChartData: lineChartData.newVisitis
+    }
+  },
+  methods: {
+    handleSetLineChartData(type) {
+      this.lineChartData = lineChartData[type]
+    }
+  }
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-.dashboard {
-  &-container {
-    margin: 30px;
+<style lang="scss" scoped>
+.dashboard-editor-container {
+  padding: 32px;
+  background-color: rgb(240, 242, 245);
+  position: relative;
+
+  .github-corner {
+    position: absolute;
+    top: 0px;
+    border: 0;
+    right: 0;
   }
-  &-text {
-    font-size: 30px;
-    line-height: 46px;
+
+  .chart-wrapper {
+    background: #fff;
+    padding: 16px 16px 0;
+    margin-bottom: 32px;
   }
 }
 </style>

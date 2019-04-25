@@ -144,8 +144,8 @@ export const constantRouterMap = [
     component: Layout,
     children: [
       {
-        path: 'https://github.com/PanJiaChen/vue-admin-template',
-        meta: { title: '项目地址', icon: 'link' }
+        path: 'https://github.com/iamywang',
+        meta: { title: 'Github', icon: 'link' }
       }
     ]
   },

@@ -1,14 +1,21 @@
 <template>
   <div class="components-container">
-    <el-alert :closable="false" center title="发表新视频" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">添加视频</el-card>
     <el-form label-width="120px" style="margin: 8px">
       <el-form-item label="视频id" style="text-align: left">{{ id }}</el-form-item>
       <el-form-item label="视频标题"><el-input v-model="title" placeholder="请输入视频标题"/></el-form-item>
       <el-form-item label="视频发表日期" style="text-align: left">{{ date }}</el-form-item>
       <el-form-item label="视频时长"><el-input v-model="time" placeholder="请输入视频时长"/></el-form-item>
       <el-form-item label="视频作者"><el-input v-model="author" placeholder="请输入视频作者"/></el-form-item>
-      <el-form-item label="视频背景图"><el-input v-model="videoback" placeholder="请输入视频背景图"/></el-form-item>
-      <el-form-item label="视频"><el-input v-model="videosrc" placeholder="请输入视频地址"/></el-form-item>
+      <el-form-item label="视频背景图">
+        <el-input v-model="videoback" placeholder="请输入视频背景图">
+          <el-button slot="append" size="small">预览</el-button>
+        </el-input>
+      </el-form-item>
+      <el-form-item label="视频">
+        <el-input v-model="videosrc" placeholder="请输入视频地址"/>
+        <video :src="videosrc" controls="controls" style="margin-top: 8px; width: 800px; height: 450px">emm</video>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="addVideo">发布视频</el-button>
         <el-button>取消</el-button>

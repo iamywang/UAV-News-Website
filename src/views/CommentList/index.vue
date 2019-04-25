@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-alert :closable="false" center title="评论管理" type="success" style="margin: 8px"/>
+    <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">评论管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
         <el-input placeholder="请输入内容" size="small">
@@ -68,7 +68,7 @@
       <el-table-column align="center" sortable label="ID" prop="_id"/>
       <el-table-column align="center" label="头像" width="72">
         <template slot-scope="scope">
-          <img :src="scope.row.head" width="40" height="40">
+          <img :src="scope.row.head" width="40" height="40" style="border-radius: 100%;">
         </template>
       </el-table-column>
       <el-table-column align="center" label="昵称" prop="name"/>
@@ -81,8 +81,23 @@
       <el-table-column align="center" label="选项" width="180">
         <template slot-scope="scope">
           <el-button-group>
-            <el-button type="primary" size="mini" icon="el-icon-edit"/>
-            <el-button type="danger" size="mini" icon="el-icon-delete"/>
+            <el-button type="primary" size="mini" icon="el-icon-edit" @click="edit(scope.row)"/>
+            <el-dialog :visible.sync="dialogFormVisible" title="编辑评论">
+              <el-form label-width="120px" style="margin: 8px">
+                <el-form-item label="昵称" style="text-align: left">{{ scope.row.name }}</el-form-item>
+                <el-form-item label="楼层" style="text-align: left">{{ scope.row.level }}</el-form-item>
+                <el-form-item label="评论时间" style="text-align: left">{{ scope.row.date }}</el-form-item>
+                <el-form-item label="所在地" style="text-align: left">{{ scope.row.location }}</el-form-item>
+                <el-form-item label="机型" style="text-align: left">{{ scope.row.model }}</el-form-item>
+                <el-form-item label="评论内容"><el-input v-model="commenttext" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入评论"/></el-form-item>
+                <el-form-item label="点赞数"><el-input v-model="likenum" placeholder="请输入点赞数"/></el-form-item>
+                <el-form-item>
+                  <el-button @click="dialogFormVisible = false">取消</el-button>
+                  <el-button type="primary" @click="confirmEdit">确定</el-button>
+                </el-form-item>
+              </el-form>
+            </el-dialog>
+            <el-button type="danger" size="mini" icon="el-icon-delete" @click="del(scope.row)"/>
           </el-button-group>
         </template>
       </el-table-column>
@@ -97,7 +112,10 @@ export default {
   data() {
     return {
       list: [],
-      listLoading: true
+      listLoading: true,
+      dialogFormVisible: false,
+      commenttext: '',
+      likenum: 0
     }
   },
   created() {
@@ -114,6 +132,30 @@ export default {
       }).then(function(res) {
         that.list = res.data
         that.listLoading = false
+      })
+    },
+    edit(res) {
+      this.dialogFormVisible = true
+      this.likenum = res.like
+      this.commenttext = res.text
+    },
+    confirmEdit() {
+      this.$notify({
+        type: 'success',
+        message: '编辑成功!'
+      })
+      this.dialogFormVisible = false
+    },
+    del(res) {
+      this.$confirm('此操作将永久删除, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$notify({
+          type: 'success',
+          message: '删除成功!'
+        })
       })
     }
   }
