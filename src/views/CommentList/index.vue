@@ -86,8 +86,8 @@
               <el-form label-width="120px" style="margin: 8px">
                 <el-form-item label="头像" style="text-align: left"><el-input v-model="logo" placeholder="请输入头像"/></el-form-item>
                 <el-form-item label="昵称" style="text-align: left"><el-input v-model="name" placeholder="请输入昵称"/></el-form-item>
-                <el-form-item label="楼层" style="text-align: left">{{ scope.row.level }}</el-form-item>
-                <el-form-item label="评论时间" style="text-align: left">{{ scope.row.date }}</el-form-item>
+                <el-form-item label="楼层" style="text-align: left">{{ level }}</el-form-item>
+                <el-form-item label="评论时间" style="text-align: left">{{ date }}</el-form-item>
                 <el-form-item label="所在地" style="text-align: left"><el-input v-model="location" placeholder="请输入所在地"/></el-form-item>
                 <el-form-item label="机型" style="text-align: left"><el-input v-model="model" placeholder="请输入机型"/></el-form-item>
                 <el-form-item label="评论内容"><el-input v-model="commenttext" :autosize="{ minRows: 5, maxRows: 10}" type="textarea" placeholder="请输入评论"/></el-form-item>
@@ -119,6 +119,7 @@ export default {
       id: '',
       type: '',
       level: 0,
+      date: '',
       name: '',
       logo: '',
       location: '',
@@ -148,6 +149,7 @@ export default {
       this.id = res._id
       this.type = res.type
       this.level = res.level
+      this.date = res.date
       this.name = res.name
       this.logo = res.head
       this.location = res.location
@@ -177,15 +179,30 @@ export default {
       })
     },
     del(res) {
+      this.id = res._id
+      this.type = res.type
+      this.level = res.level
       this.$confirm('此操作将永久删除, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        this.confirmDel()
         this.$notify({
           type: 'success',
           message: '删除成功!'
         })
+      })
+    },
+    confirmDel() {
+      var that = this
+      axios.post('/server/deleteComment/', qs.stringify({
+        type: that.type,
+        id: that.id,
+        level: that.level
+      })).then(function(res) {
+        that.dialogFormVisible = false
+        that.fetchData()
       })
     }
   }
