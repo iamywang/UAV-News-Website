@@ -1,6 +1,11 @@
 <template>
   <div class="app-container">
     <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">轮播图管理</el-card>
+    <el-carousel trigger="click" type="card" style="text-align: center">
+      <el-carousel-item v-for="item in list" :key="item">
+        <img :src="item.src" style="width: 600px">
+      </el-carousel-item>
+    </el-carousel>
     <el-row>
       <el-col :span="6" style="margin: 8px">
         <el-input placeholder="请输入内容" size="small">

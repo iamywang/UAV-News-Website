@@ -37,12 +37,15 @@
       <el-table-column align="center" label="头像" width="72">
         <template slot-scope="scope">
           <img v-if="scope.row._id!==1" src="https://www.easyicon.net/download/png/1164661/64/" width="40" height="40" style="border-radius: 100%">
-          <img v-if="scope.row._id===1" src="https://wx.qlogo.cn/mmopen/vi_32/kIW2xO2OGd5Oqt8dYCJUXibav0cLJGb914HhmA8z0BfQLErwVIsVwNkmP3NIRLThmbIk63NiajYSxxMyHibTiahiaDQ/132" width="40" height="40" style="border-radius: 100%">
+          <img v-if="scope.row._id===1" src="https://wx.qlogo.cn/mmopen/vi_32/kIW2xO2OGd5Oqt8dYCJUXibav0cLJGb914HhmA8z0BfQLErwVIsVwNkmP3NIRLThmsicWjmftDI8MK6NrwGGFjTQ/132" width="40" height="40" style="border-radius: 100%">
         </template>
       </el-table-column>
       <el-table-column align="center" label="用户昵称" prop="name"/>
       <el-table-column align="center" label="用户类型">
-        <template slot-scope="scope">普通用户</template>
+        <template slot-scope="scope">
+          <div v-if="scope.row._id!==1">普通用户</div>
+          <div v-if="scope.row._id===1">超级管理员</div>
+        </template>
       </el-table-column>
       <el-table-column align="center" sortable label="注册时间" prop="regdate"/>
       <el-table-column align="center" sortable label="最后登录时间" prop="logindate"/>
