@@ -8,7 +8,7 @@
     </el-carousel>
     <el-row>
       <el-col :span="6" style="margin: 8px">
-        <el-input placeholder="请输入内容" size="small">
+        <el-input v-model="searchItem" placeholder="请输入内容" size="small">
           <el-button slot="append" size="small" icon="el-icon-search" />
         </el-input>
       </el-col>
@@ -72,7 +72,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination :total="100" background layout="prev, pager, next" style="float: right"/>
+    <el-pagination :total="10" background layout="prev, pager, next" style="float: right"/>
   </div>
 </template>
 
@@ -88,7 +88,8 @@ export default {
       swiperFormVisible: false,
       id: '',
       title: '',
-      src: ''
+      src: '',
+      searchItem: ''
     }
   },
   created() {

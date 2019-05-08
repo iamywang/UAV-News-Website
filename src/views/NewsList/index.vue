@@ -3,12 +3,12 @@
     <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">新闻管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
-        <el-input placeholder="请输入内容" size="small">
-          <el-button slot="append" size="small" icon="el-icon-search" />
+        <el-input v-model="searchItem" placeholder="请输入内容" size="small">
+          <el-button slot="append" size="small" icon="el-icon-search" @click="searchFunc"/>
         </el-input>
       </el-col>
       <el-col :span="4" style="margin: 8px">
-        <el-button type="plain" size="small" icon="el-icon-plus">添加新闻</el-button>
+        <el-button type="plain" size="small" icon="el-icon-plus" @click="navigateTo">添加新闻</el-button>
       </el-col>
     </el-row>
     <el-table
@@ -53,7 +53,7 @@
           </el-col>
         </template>
       </el-table-column>
-      <el-table-column align="center" type="index"/>
+      <el-table-column :index="(currentPage-1)*10+1" align="center" type="index"/>
       <el-table-column align="center" sortable label="ID" prop="_id" width="160"/>
       <el-table-column align="center" label="新闻名称" prop="name" width="300"/>
       <el-table-column align="center" sortable label="发表日期" prop="date"/>
@@ -85,7 +85,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination :total="100" background layout="prev, pager, next" style="float: right"/>
+    <el-pagination :total="20" :current-page.sync="currentPage" background layout="prev, pager, next" style="float: right" @current-change="handleCurrentChange"/>
   </div>
 </template>
 
@@ -104,7 +104,9 @@ export default {
       author: '',
       newsback: '',
       newstext: '',
-      see: 0
+      see: 0,
+      currentPage: 1,
+      searchItem: ''
     }
   },
   created() {
@@ -114,9 +116,29 @@ export default {
     fetchData() {
       var that = this
       this.listLoading = true
-      axios.get('/server/search/', {
+      axios.get('/server/backSearch/', {
         params: {
-          key: 'news'
+          key: 'news',
+          page: that.currentPage
+        }
+      }).then(function(res) {
+        that.list = res.data
+        that.listLoading = false
+      })
+    },
+    handleCurrentChange() {
+      this.fetchData()
+    },
+    navigateTo() {
+      this.$router.push({ path: '/news/func2' })
+    },
+    searchFunc() {
+      var that = this
+      this.listLoading = true
+      axios.get('/server/allSearch/', {
+        params: {
+          key: that.searchItem,
+          type: 'news'
         }
       }).then(function(res) {
         that.list = res.data

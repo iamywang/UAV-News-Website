@@ -3,12 +3,12 @@
     <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">文章管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
-        <el-input placeholder="请输入内容" size="small">
-          <el-button slot="append" size="small" icon="el-icon-search" />
+        <el-input v-model="searchItem" placeholder="请输入内容" size="small">
+          <el-button slot="append" size="small" icon="el-icon-search" @click="searchFunc"/>
         </el-input>
       </el-col>
       <el-col :span="4" style="margin: 8px">
-        <el-button type="plain" size="small" icon="el-icon-plus">添加文章</el-button>
+        <el-button type="plain" size="small" icon="el-icon-plus" @click="navigateTo">添加文章</el-button>
       </el-col>
     </el-row>
     <el-table
@@ -85,7 +85,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination :total="100" background layout="prev, pager, next" style="float: right"/>
+    <el-pagination :total="10" background layout="prev, pager, next" style="float: right"/>
   </div>
 </template>
 
@@ -104,7 +104,8 @@ export default {
       author: '',
       newsback: '',
       newstext: '',
-      see: 0
+      see: 0,
+      searchItem: ''
     }
   },
   created() {
@@ -117,6 +118,22 @@ export default {
       axios.get('/server/search/', {
         params: {
           key: 'article'
+        }
+      }).then(function(res) {
+        that.list = res.data
+        that.listLoading = false
+      })
+    },
+    navigateTo() {
+      this.$router.push({ path: '/user/func3' })
+    },
+    searchFunc() {
+      var that = this
+      this.listLoading = true
+      axios.get('/server/allSearch/', {
+        params: {
+          key: that.searchItem,
+          type: 'article'
         }
       }).then(function(res) {
         that.list = res.data

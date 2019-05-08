@@ -3,12 +3,12 @@
     <el-card shadow="hover" style="text-align: center; margin: 8px; font-weight: bold">评论管理</el-card>
     <el-row>
       <el-col :span="6" style="margin: 8px">
-        <el-input placeholder="请输入内容" size="small">
-          <el-button slot="append" size="small" icon="el-icon-search" />
+        <el-input v-model="searchItem" placeholder="请输入内容" size="small">
+          <el-button slot="append" size="small" icon="el-icon-search"/>
         </el-input>
       </el-col>
       <el-col :span="4" style="margin: 8px">
-        <el-button type="plain" size="small" icon="el-icon-plus">添加评论</el-button>
+        <el-button type="plain" size="small" icon="el-icon-plus" @click="navigateTo">添加评论</el-button>
       </el-col>
     </el-row>
     <el-table
@@ -103,7 +103,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination :total="100" background layout="prev, pager, next" style="float: right"/>
+    <el-pagination :total="10" background layout="prev, pager, next" style="float: right"/>
   </div>
 </template>
 
@@ -125,7 +125,8 @@ export default {
       location: '',
       model: '',
       commenttext: '',
-      likenum: 0
+      likenum: 0,
+      searchItem: ''
     }
   },
   created() {
@@ -143,6 +144,9 @@ export default {
         that.list = res.data
         that.listLoading = false
       })
+    },
+    navigateTo() {
+      this.$router.push({ path: '/comments/func2' })
     },
     edit(res) {
       this.dialogFormVisible = true
