@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-      <h3 class="title">无人机新闻后台管理系统 V1.2</h3>
+      <h3 class="title">无人机新闻后台管理系统 V1.3</h3>
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
@@ -22,6 +22,14 @@
         <span class="show-pwd" @click="showPwd">
           <svg-icon :icon-class="pwdType === 'password' ? 'eye' : 'eye-open'" />
         </span>
+      </el-form-item>
+      <el-form-item prop="checkcode">
+        <el-col :span="18">
+          <el-input v-model="loginForm.checkcode" name="checkcode" type="text" auto-complete="on" placeholder="验证码"/>
+        </el-col>
+        <el-col :span="6" style="text-align: center">
+          <el-button type="small">获取验证码</el-button>
+        </el-col>
       </el-form-item>
       <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
@@ -59,7 +67,8 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: 'admin'
+        password: 'admin',
+        checkcode: 'ABCDE'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
